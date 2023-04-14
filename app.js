@@ -3,12 +3,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { readdirSync } = require("fs");
-const PORT = 4000;
+const PORT = 5000;
 const app = express();
+const passport = require("passport");
+const { initialize } = require("passport");
+const { passportConfig } = require("./config/passport");
+const dotenv = require("dotenv").config();
 
 //middlewares
 app.use(express.json());
 app.use(cors());
+app.use(passport.initialize());
+passportConfig(passport);
 
 //routes
 readdirSync("./routes").map((route) =>
