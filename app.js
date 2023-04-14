@@ -27,7 +27,7 @@ mongoose
   )
   .then(() => console.log("mongodb connection is successful"))
   .catch((err) => console.log(err));
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
